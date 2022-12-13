@@ -1,13 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
+func sayHello(c *gin.Context) {
+	c.String(http.StatusOK, "Hello World!")
+}
+
 func main() {
-	fileServer := http.FileServer(http.Dir("./static"))
-	http.Handle("/", fileServer)
-	fmt.Println("Listening on port 8080")
-	http.ListenAndServe(":8080", nil)
+	r := gin.Default()
+	r.GET("/", sayHello)
+	r.Run(":8080")
 }
