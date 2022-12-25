@@ -1,0 +1,7 @@
+services:
+  app:
+    image: arshadsiddiqui/go-bnb
+    build: .
+    ports:
+      - "8080:8080"
+    container_name: go-bnb
