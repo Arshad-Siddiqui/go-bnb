@@ -14,6 +14,7 @@ func index(c *gin.Context) {
 func main() {
 	r := gin.Default()
 	r.SetTrustedProxies([]string{"127.0.0.1"})
+	r.Static("/static", "./static/")
 	r.LoadHTMLGlob("static/*.html")
 
 	r.GET("/", index)
