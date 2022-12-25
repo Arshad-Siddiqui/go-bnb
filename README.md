@@ -13,4 +13,4 @@ go mod tidy
 TODO: Double check the above command is accurate.
 
 ## Links to learn from
-- (Link to learning file routing)[https://stackoverflow.com/questions/42967235/golang-gin-gonic-split-routes-into-multiple-files]
+- [Link to learning file routing](https://stackoverflow.com/questions/42967235/golang-gin-gonic-split-routes-into-multiple-files)
