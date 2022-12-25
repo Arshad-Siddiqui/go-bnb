@@ -12,6 +12,14 @@ go mod tidy
 ```
 TODO: Double check the above command is accurate.
 
+### Run the server
+
+```bash
+
+go run main.go
+
+```
+
 ## Links to learn from
 - [Link to learning file routing](https://stackoverflow.com/questions/42967235/golang-gin-gonic-split-routes-into-multiple-files)
 - [Instructions used to build Dockerfile](https://hub.docker.com/_/golang)
