@@ -17,11 +17,27 @@ TODO: Double check the above command is accurate.
 - [Instructions used to build Dockerfile](https://hub.docker.com/_/golang)
 
 ## How to run with Docker
+
+Note: You must have Docker installed on your machine.
+Install here: https://docs.docker.com/get-docker/
 ```bash
 
 docker build -t go-bnb .
 
-docker run -p 8080:8080 go-bnb
+docker run -dp 8080:8080 go-bnb
+# Will build the Docker image and run it on port 8080.
+```
+
+
+## How to stop Docker container
+```bash
+
+docker ps
+# Get the container id
+
+docker stop <container id>
+# Kills the container gracefully
 
 ```
-- The above commands will build the Docker image and run it on port 8080.
+
+If ran without -d flag, you can stop the container by pressing `ctrl+c`
