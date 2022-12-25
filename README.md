@@ -19,7 +19,7 @@ TODO: Double check the above command is accurate.
 ## How to run with Docker
 
 Note: You must have Docker installed on your machine.
-Install here: https://docs.docker.com/get-docker/
+[Install here](https://docs.docker.com/get-docker/)
 ```bash
 
 docker build -t go-bnb .
