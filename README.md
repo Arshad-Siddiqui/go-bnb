@@ -5,12 +5,15 @@ This is a simple project to learn Go and Gin Gonic. It is a simple API that allo
 
 ## How to run
 
+After cloning the repo, run the following commands in the root directory of the project.
 ### Install dependencies
+> Note: You must have Go installed on your machine.
+[Install here](https://golang.org/doc/install)
 
 ```bash
-go mod tidy
+# Run in the root directory of the project
+go get
 ```
-TODO: Double check the above command is accurate.
 
 ### Run the server
 
