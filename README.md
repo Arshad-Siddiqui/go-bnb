@@ -1,7 +1,9 @@
 # Go-BnB
 
 ## Description
-This is a simple project to learn Go and Gin Gonic. It is a simple API that allows you to create a user, login, and create a listing.
+This is a simple project to learn Go and ~~Gin Gonic~~ its standard net/http library. It is a simple API that allows you to create a user, login, and create an airBnB style listing.
+
+For the database, it will use MongoDB and its official Go driver and for authentication, it will use JWT and bcrypt.
 
 ## How to run
 
