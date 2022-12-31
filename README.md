@@ -28,6 +28,12 @@ go run main.go
 ## Links to learn from
 - [File routing](https://stackoverflow.com/questions/42967235/golang-gin-gonic-split-routes-into-multiple-files)
 - [Build Dockerfile](https://hub.docker.com/_/golang)
+- [Official Go documentation](https://tour.golang.org/welcome/1)
+- [Go by Example](https://gobyexample.com/)
+- [Learn Go with Tests](https://quii.gitbook.io/learn-go-with-tests/)
+- [Go Programming Language book](https://www.gopl.io/)
+- [Go Web Examples](https://github.com/hoanhan101/go-web-examples)
+
 
 ## How to run with Docker
 
