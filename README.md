@@ -25,6 +25,20 @@ go run main.go
 
 ```
 
+## How to run with live reload
+
+- codegangsta/gin is a live reload tool for Go web applications.
+- Depending on your go version it may need to be installed globally.
+
+```bash
+# Install gin
+go install github.com/codegangsta/gin
+
+# Run the server with gin
+
+gin run main.go
+
+```
 ## Links to learn from
 - [File routing](https://stackoverflow.com/questions/42967235/golang-gin-gonic-split-routes-into-multiple-files)
 - [Build Dockerfile](https://hub.docker.com/_/golang)
