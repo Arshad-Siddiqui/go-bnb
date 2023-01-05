@@ -38,6 +38,10 @@ go install github.com/codegangsta/gin
 
 gin run main.go
 
+# Most likely you will need to run the following command
+
+gin -i --appPort 8080 --port 3000 run main.go
+
 ```
 ## Links to learn from
 - [File routing](https://stackoverflow.com/questions/42967235/golang-gin-gonic-split-routes-into-multiple-files)
