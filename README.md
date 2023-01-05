@@ -1,9 +1,9 @@
 # Go-BnB
 
 ## Description
-This is a simple project to learn Go and ~~Gin Gonic~~ its standard net/http library. It is a simple API that allows you to create a user, login, and create an airBnB style listing.
+This is a simple project to learn Go and ~~Gin Gonic~~ its standard net/http library, as well as GORM. It is a simple API that allows you to create a user, login, and create an airBnB style listing.
 
-The database for this project will be powered by MongoDB, and we will be using the official Go driver to connect to it. We will also be implementing JSON Web Tokens (JWT) and bcrypt for authentication purposes.
+The database for this project will be powered by Postgres, and interacted with by GORM. We will also be implementing JSON Web Tokens (JWT) and bcrypt for authentication purposes.
 
 ## How to run
 
