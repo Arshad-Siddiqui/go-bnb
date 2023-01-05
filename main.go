@@ -11,5 +11,7 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello World!"))
+	w.Header().Set("Content-Type", "text/html")
+
+	w.Write([]byte(`<h1>Hi there</h1>`))
 }
