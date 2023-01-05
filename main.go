@@ -1,6 +1,7 @@
 package main
 
 import (
+	"html/template"
 	"log"
 	"net/http"
 )
@@ -11,7 +12,26 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
+	switch r.URL.Path {
+	case "/":
+		index(w, r)
+	default:
+		http.NotFound(w, r)
+	}
+}
 
-	w.Write([]byte(`<h1>Hi there</h1>`))
+var staticPath = "./static/"
+
+func index(w http.ResponseWriter, r *http.Request) {
+	fileName := "index.html"
+	t, err := template.ParseFiles(staticPath + fileName)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = t.ExecuteTemplate(w, fileName, nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
