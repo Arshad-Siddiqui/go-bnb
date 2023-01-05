@@ -40,7 +40,8 @@ gin run main.go
 
 # Most likely you will need to run the following command
 
-gin -i --appPort 8080 --port 3000 run main.go
+gin -i --appPort 8080 --port 3000 --all run main.go
+# all flag will watch all files in the current directory as opposed to just go files.
 
 ```
 ## Links to learn from
