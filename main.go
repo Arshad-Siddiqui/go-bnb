@@ -9,6 +9,9 @@ import (
 	"github.com/joho/godotenv"
 )
 
+var staticPath = "./static/"
+var tmplPath = "./tmpl/"
+
 func main() {
 	err := godotenv.Load(".env")
 	if err != nil {
@@ -16,6 +19,7 @@ func main() {
 	}
 
 	http.HandleFunc("/", handler)
+	http.Handle(staticPath, http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	port := os.Getenv("PORT")
 	log.Fatal(http.ListenAndServe(":"+port, nil))
@@ -30,11 +34,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-var staticPath = "./static/"
-
 func index(w http.ResponseWriter, r *http.Request) {
 	fileName := "index.html"
-	t, err := template.ParseFiles(staticPath + fileName)
+	t, err := template.ParseFiles(tmplPath + fileName)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
