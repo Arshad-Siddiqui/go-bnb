@@ -79,3 +79,9 @@ docker stop <container id>
 ```
 
 If ran without -d flag, you can stop the container by pressing `ctrl+c`
+
+## General commands I think I'll need later
+
+### Browser
+
+cmd + shift + r = hard refresh
