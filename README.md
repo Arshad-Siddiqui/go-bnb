@@ -1,7 +1,7 @@
 # Go-BnB
 
 ## Description
-This is a simple project to learn Go and ~~Gin Gonic~~ its standard net/http library, as well as GORM. It is a simple API that allows you to create a user, login, and create an airBnB style listing.
+This is a simple project to learn Go and ~~Gin Gonic~~ ~~its standard net/http library~~ fiber, as well as GORM. It is a simple API that allows you to create a user, login, and create an airBnB style listing.
 
 The database for this project will be powered by Postgres, and interacted with by GORM. We will also be implementing JSON Web Tokens (JWT) and bcrypt for authentication purposes.
 
@@ -52,6 +52,7 @@ gin -i --appPort 8080 --port 3000 --all run main.go
 - [Learn Go with Tests](https://quii.gitbook.io/learn-go-with-tests/)
 - [Go Programming Language book](https://www.gopl.io/)
 - [Go Web Examples](https://github.com/hoanhan101/go-web-examples)
+- [Cool tutorial](https://go.dev/doc/articles/wiki/)
 
 
 ## How to run with Docker
@@ -65,7 +66,6 @@ docker build -t go-bnb .
 docker run -dp 8080:8080 go-bnb
 # Will build the Docker image and run it on port 8080.
 ```
-
 
 ## How to stop Docker container
 ```bash
