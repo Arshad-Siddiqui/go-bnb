@@ -23,16 +23,13 @@ func main() {
 		Views:   engine,
 	})
 
+	app.Static("/", "./assets")
 	app.Get("/", func(c *fiber.Ctx) error {
-		return c.Render("index", fiber.Map{
-			"Title": "Home",
-		})
+		return c.Render("index", fiber.Map{})
 	})
 
 	app.Get("/signup", func(c *fiber.Ctx) error {
-		return c.Render("signup", fiber.Map{
-			"Title": "Signup",
-		})
+		return c.Render("signup", fiber.Map{})
 	})
 
 	app.Get("/login", func(c *fiber.Ctx) error {
