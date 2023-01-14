@@ -33,7 +33,7 @@ func main() {
 	})
 
 	app.Get("/login", func(c *fiber.Ctx) error {
-		return c.SendString("Login test")
+		return c.Render("login", fiber.Map{})
 	})
 
 	log.Fatal(app.Listen(":" + os.Getenv("PORT")))
