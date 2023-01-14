@@ -32,6 +32,12 @@ func main() {
 		return c.Render("signup", fiber.Map{})
 	})
 
+	app.Post("/signup", func(c *fiber.Ctx) error {
+		username := c.FormValue("username")
+		password := c.FormValue("password")
+		return c.SendString("Username: " + username + " Password: " + password)
+	})
+
 	app.Get("/login", func(c *fiber.Ctx) error {
 		return c.Render("login", fiber.Map{})
 	})
