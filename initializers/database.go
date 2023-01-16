@@ -7,12 +7,14 @@ import (
 	"gorm.io/gorm"
 )
 
-func InitDB() *gorm.DB {
+var DB *gorm.DB
+
+func InitDB() {
 	// Example "host=localhost user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai"
 	dsn := os.Getenv("DATABASE_URL")
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	var err error
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
-	return db
 }
