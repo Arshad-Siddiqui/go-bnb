@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"github.com/Arshad-Siddiqui/go-bnb/controllers"
 	"github.com/Arshad-Siddiqui/go-bnb/initializers"
 	"github.com/gofiber/template/html"
 
@@ -34,9 +35,7 @@ func main() {
 	})
 
 	app.Post("/signup", func(c *fiber.Ctx) error {
-		username := c.FormValue("username")
-		password := c.FormValue("password")
-		return c.SendString("Username: " + username + " Password: " + password)
+		return controllers.UserCreate(c)
 	})
 
 	app.Get("/login", func(c *fiber.Ctx) error {
