@@ -3,18 +3,16 @@ package main
 import (
 	"log"
 
+	"github.com/Arshad-Siddiqui/go-bnb/initializers"
 	"github.com/gofiber/template/html"
 
 	"os"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
 )
 
 func init() {
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	initializers.LoadEnvVariables()
 }
 
 func main() {
