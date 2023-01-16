@@ -11,13 +11,15 @@ import (
 	"github.com/joho/godotenv"
 )
 
+func init() {
+	if err := godotenv.Load(); err != nil {
+		log.Fatal("Error loading .env file")
+	}
+}
+
 func main() {
 	engine := html.New("./views", ".html")
 
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
 	app := fiber.New(fiber.Config{
 		AppName: "gobnb",
 		Views:   engine,
