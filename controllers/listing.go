@@ -15,3 +15,9 @@ func ListingCreate(c *fiber.Ctx) error {
 	initializers.DB.Create(&listing)
 	return c.JSON(listing)
 }
+
+func ListingIndex(c *fiber.Ctx) error {
+	var listings []models.Listing
+	initializers.DB.Find(&listings)
+	return c.JSON(listings)
+}
