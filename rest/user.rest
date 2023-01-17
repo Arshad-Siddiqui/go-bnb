@@ -12,8 +12,8 @@ POST http://localhost:8080/signup/
 Content-Type: application/json
 
 {
-  "email": "helloemail",
-  "first_name": "firsthello",
-  "last_name": "lasthello",
-  "password": "password"
+  "email": "secondemail11",
+  "first_name": "secondhello",
+  "last_name": "secondhello",
+  "password": "secondpassword"
 }
