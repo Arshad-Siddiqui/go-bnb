@@ -17,3 +17,9 @@ Content-Type: application/json
   "last_name": "secondhello",
   "password": "secondpassword"
 }
+
+###
+POST http://localhost:8080/signup/
+Content-Type: application/x-www-form-urlencoded
+
+first_name=John&last_name=Doe&email=johndoe@example.com&password=my_secure_password
