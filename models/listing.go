@@ -6,8 +6,8 @@ import (
 
 type Listing struct {
 	gorm.Model
-	Title       string `json:"title"`
-	Description string `json:"description"`
-	Price       int    `json:"price"`
+	Title       string `json:"title" form:"title"`
+	Description string `json:"description" form:"description"`
+	Price       int    `json:"price" form:"price"`
 	// HostID      uint   `json:"host_id"`
 }
