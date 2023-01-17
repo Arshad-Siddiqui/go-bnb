@@ -85,3 +85,7 @@ If ran without -d flag, you can stop the container by pressing `ctrl+c`
 ### Browser
 
 cmd + shift + r = hard refresh
+
+## General links I might need later
+
+-[Testing Fiber](https://dev.to/koddr/go-fiber-by-examples-testing-the-application-1ldf)
