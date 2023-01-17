@@ -42,5 +42,9 @@ func main() {
 		return c.Render("login", fiber.Map{})
 	})
 
+	app.Get("/users", func(c *fiber.Ctx) error {
+		return controllers.UserIndex(c)
+	})
+
 	log.Fatal(app.Listen(":" + os.Getenv("PORT")))
 }

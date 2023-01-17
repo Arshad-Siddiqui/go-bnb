@@ -15,3 +15,9 @@ func UserCreate(c *fiber.Ctx) error {
 	initializers.DB.Create(&user)
 	return c.JSON(user)
 }
+
+func UserIndex(c *fiber.Ctx) error {
+	var users []models.User
+	initializers.DB.Find(&users)
+	return c.JSON(users)
+}
