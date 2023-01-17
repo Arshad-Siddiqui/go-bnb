@@ -46,5 +46,9 @@ func main() {
 		return controllers.UserIndex(c)
 	})
 
+	app.Post("/listings", func(c *fiber.Ctx) error {
+		return controllers.ListingCreate(c)
+	})
+
 	log.Fatal(app.Listen(":" + os.Getenv("PORT")))
 }

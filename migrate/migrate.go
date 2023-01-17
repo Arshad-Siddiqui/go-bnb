@@ -14,5 +14,6 @@ func init() {
 
 func main() {
 	initializers.DB.AutoMigrate(&models.User{})
+	initializers.DB.AutoMigrate(&models.Listing{})
 	fmt.Println("Migrated")
 }
