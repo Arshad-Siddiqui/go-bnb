@@ -68,6 +68,7 @@ gin -i --appPort 8080 --port 3000 --all run main.go
 - [Go Programming Language book](https://www.gopl.io/)
 - [Go Web Examples](https://github.com/hoanhan101/go-web-examples)
 - [Cool tutorial](https://go.dev/doc/articles/wiki/)
+- [godotenv](https://github.com/joho/godotenv)
 
 
 ## How to run with Docker
