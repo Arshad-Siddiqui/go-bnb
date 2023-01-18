@@ -17,6 +17,21 @@ After cloning the repo, run the following commands in the root directory of the 
 go get
 ```
 
+### Create a .env file
+
+```bash
+# Create a .env file in the root directory of the project
+touch .env
+```
+
+### Add the following to the .env.development file
+
+```bash
+# .env.development
+PORT=8080
+DATABASE_URL= # Your postgres database connection string
+```
+
 ### Run the server
 
 ```bash
