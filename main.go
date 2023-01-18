@@ -5,7 +5,7 @@ import (
 
 	"github.com/Arshad-Siddiqui/go-bnb/controllers"
 	"github.com/Arshad-Siddiqui/go-bnb/initializers"
-	"github.com/gofiber/template/html"
+	"github.com/Arshad-Siddiqui/go-bnb/router"
 
 	"os"
 
@@ -18,12 +18,7 @@ func init() {
 }
 
 func main() {
-	engine := html.New("./views", ".html")
-
-	app := fiber.New(fiber.Config{
-		AppName: "gobnb",
-		Views:   engine,
-	})
+	app := router.New()
 
 	app.Static("/", "./assets")
 	app.Get("/", func(c *fiber.Ctx) error {
