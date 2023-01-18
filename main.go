@@ -57,5 +57,9 @@ func main() {
 	app.Get("/listings", func(c *fiber.Ctx) error {
 		return controllers.ListingIndex(c)
 	})
+
+	app.Delete("/listings/:id", func(c *fiber.Ctx) error {
+		return controllers.ListingDelete(c)
+	})
 	log.Fatal(app.Listen(":" + os.Getenv("PORT")))
 }
