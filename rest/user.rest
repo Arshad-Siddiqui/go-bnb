@@ -1,14 +1,14 @@
-POST http://localhost:8080/login/
+POST http://localhost:8080/user/login/
 Content-Type: application/json
 
 {
-  "email": "test",
-  "password": "password"
+  "email": "secondemail11",
+  "password": "secondpassword"
 }
 
 ###
 
-POST http://localhost:8080/signup/
+POST http://localhost:8080/user/signup/
 Content-Type: application/json
 
 {
