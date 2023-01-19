@@ -24,7 +24,7 @@ func addUserRoutes(app *fiber.App) {
 		return controllers.UserAuthenticate(c)
 	})
 
-	user.Get("/users", func(c *fiber.Ctx) error {
+	user.Get("/index", func(c *fiber.Ctx) error {
 		return controllers.UserIndex(c)
 	})
 

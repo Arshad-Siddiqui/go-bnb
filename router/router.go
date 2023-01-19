@@ -1,7 +1,6 @@
 package router
 
 import (
-	"github.com/Arshad-Siddiqui/go-bnb/controllers"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/template/html"
@@ -21,17 +20,7 @@ func New() *fiber.App {
 	})
 
 	addUserRoutes(app)
+	addListingRoutes(app)
 
-	app.Post("/listings", func(c *fiber.Ctx) error {
-		return controllers.ListingCreate(c)
-	})
-
-	app.Get("/listings", func(c *fiber.Ctx) error {
-		return controllers.ListingIndex(c)
-	})
-
-	app.Delete("/listings/:id", func(c *fiber.Ctx) error {
-		return controllers.ListingDelete(c)
-	})
 	return app
 }
