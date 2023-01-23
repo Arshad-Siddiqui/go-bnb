@@ -8,15 +8,9 @@ import (
 func addListingRoutes(app *fiber.App) {
 	listing := app.Group("listing")
 
-	listing.Post("/create", func(c *fiber.Ctx) error {
-		return controllers.ListingCreate(c)
-	})
+	listing.Post("/create", controllers.ListingCreate)
 
-	listing.Get("/index", func(c *fiber.Ctx) error {
-		return controllers.ListingIndex(c)
-	})
+	listing.Get("/index", controllers.ListingIndex)
 
-	listing.Delete("/:id", func(c *fiber.Ctx) error {
-		return controllers.ListingDelete(c)
-	})
+	listing.Delete("/:id", controllers.ListingDelete)
 }

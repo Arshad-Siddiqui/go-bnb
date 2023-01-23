@@ -1,4 +1,4 @@
-POST http://localhost:8080/listings/
+POST http://localhost:8080/listing/create
 Content-Type: application/json
 
 {
