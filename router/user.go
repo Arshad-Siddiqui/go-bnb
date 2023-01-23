@@ -12,20 +12,14 @@ func addUserRoutes(app *fiber.App) {
 		return c.Render("signup", fiber.Map{})
 	})
 
-	user.Post("/signup", func(c *fiber.Ctx) error {
-		return controllers.UserCreate(c)
-	})
+	user.Post("/signup", controllers.UserCreate)
 
 	user.Get("/login", func(c *fiber.Ctx) error {
 		return c.Render("login", fiber.Map{})
 	})
 
-	user.Post("/login", func(c *fiber.Ctx) error {
-		return controllers.UserAuthenticate(c)
-	})
+	user.Post("/login", controllers.UserAuthenticate)
 
-	user.Get("/index", func(c *fiber.Ctx) error {
-		return controllers.UserIndex(c)
-	})
+	user.Get("/index", controllers.UserIndex)
 
 }
