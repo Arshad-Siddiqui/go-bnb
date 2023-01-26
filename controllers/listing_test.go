@@ -18,7 +18,7 @@ import (
 
 var app *fiber.App
 
-func refresh() {
+func refreshListings() {
 	app = fiber.New()
 	app.Get("/", controllers.ListingIndex)
 	app.Post("/", controllers.ListingCreate)
@@ -27,7 +27,7 @@ func refresh() {
 
 var _ = Describe("ListingIndex", func() {
 	BeforeEach(func() {
-		refresh()
+		refreshListings()
 	})
 
 	It("returns a 200 OK", func() {
@@ -49,7 +49,7 @@ var _ = Describe("ListingIndex", func() {
 
 var _ = Describe("ListingCreate", func() {
 	BeforeEach(func() {
-		refresh()
+		refreshListings()
 	})
 
 	It("returns a 201 Created", func() {
