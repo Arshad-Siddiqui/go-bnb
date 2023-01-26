@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 	. "github.com/onsi/ginkgo/v2"
@@ -149,5 +150,49 @@ var _ = Describe("ListingCreate", func() {
 		}
 
 		Expect(string(body)).To(Equal(`{"id":1,"title":"Test Listing","description":"Test Description","price":100}`))
+	})
+
+	It("Should work multiple times", func() {
+		req, err := http.NewRequest("POST", "/", nil)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		req.Header.Set("Content-Type", "application/json")
+
+		for i := 0; i < 3; i++ {
+			listing := models.Listing{
+				Title:       "Test " + strconv.Itoa(i),
+				Description: "Test Description " + strconv.Itoa(i),
+				Price:       100,
+			}
+
+			jsonValue, err := json.Marshal(listing)
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+
+			req.Body = io.NopCloser(bytes.NewBuffer(jsonValue))
+			_, err = app.Test(req)
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+		}
+
+		req, _ = http.NewRequest("GET", "/", nil)
+		req.Header.Set("Content-Type", "application/json")
+		resp, _ := app.Test(req)
+
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		Expect(string(body)).To(Equal(`[{"id":1,"title":"Test 0","description":"Test Description 0","price":100},{"id":2,"title":"Test 1","description":"Test Description 1","price":100},{"id":3,"title":"Test 2","description":"Test Description 2","price":100}]`))
+
 	})
 })
