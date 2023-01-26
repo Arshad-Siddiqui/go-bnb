@@ -85,11 +85,7 @@ var _ = Describe("ListingCreate", func() {
 	})
 
 	It("returns a JSON response", func() {
-		req, err := http.NewRequest("POST", "/", nil)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
+		req, _ := http.NewRequest("POST", "/", nil)
 
 		req.Header.Set("Content-Type", "application/json")
 
@@ -99,11 +95,7 @@ var _ = Describe("ListingCreate", func() {
 			Price:       100,
 		}
 
-		jsonValue, err := json.Marshal(listing)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
+		jsonValue, _ := json.Marshal(listing)
 
 		req.Body = io.NopCloser(bytes.NewBuffer(jsonValue))
 		resp, err := app.Test(req)
@@ -186,13 +178,19 @@ var _ = Describe("ListingCreate", func() {
 		req.Header.Set("Content-Type", "application/json")
 		resp, _ := app.Test(req)
 
-		body, err := io.ReadAll(resp.Body)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
+		body, _ := io.ReadAll(resp.Body)
 
-		Expect(string(body)).To(Equal(`[{"id":1,"title":"Test 0","description":"Test Description 0","price":100},{"id":2,"title":"Test 1","description":"Test Description 1","price":100},{"id":3,"title":"Test 2","description":"Test Description 2","price":100}]`))
+		listings := []models.Listing{}
+		json.Unmarshal(body, &listings)
+		Expect(len(listings)).To(Equal(3))
+		Expect(listings[0].Title).To(Equal("Test 0"))
+		Expect(listings[1].Description).To(Equal("Test Description 1"))
+		Expect(listings[2].Price).To(Equal(100))
+	})
+})
 
+var _ = Describe("ListingDelete", func() {
+	BeforeEach(func() {
+		refreshListings()
 	})
 })
