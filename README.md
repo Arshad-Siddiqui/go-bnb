@@ -105,3 +105,15 @@ cmd + shift + r = hard refresh
 ## General links I might need later
 
 -[Testing Fiber](https://dev.to/koddr/go-fiber-by-examples-testing-the-application-1ldf)
+
+## How to run tests
+> First, make sure you have the test database set up in your .env.test file
+> Note: You must have Ginkgo installed on your machine.
+
+```bash
+go install github.com/onsi/ginkgo/ginkgo
+```
+
+```bash
+ginkgo
+```
