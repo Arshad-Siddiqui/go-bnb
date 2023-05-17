@@ -23,6 +23,25 @@ func refreshUsers() {
 	initializers.DB.Exec("DELETE FROM users")
 }
 
+func postJson(requestObject interface{}) (*http.Request, error) {
+	req, err := http.NewRequest("GET", "/", nil)
+	if err != nil {
+		fmt.Println(err)
+		return nil, err
+	}
+
+	json, err := json.Marshal(requestObject)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Body = io.NopCloser(bytes.NewBuffer(json))
+
+	req.Header.Set("Content-Type", "application/json")
+
+	return req, nil
+}
+
 var _ = Describe("UserCreate", func() {
 	BeforeEach(refreshUsers)
 
