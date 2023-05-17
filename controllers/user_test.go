@@ -23,8 +23,8 @@ func refreshUsers() {
 	initializers.DB.Exec("DELETE FROM users")
 }
 
-func postJson(requestObject interface{}) (*http.Request, error) {
-	req, err := http.NewRequest("GET", "/", nil)
+func postJsonReq(requestRoute string, requestObject interface{}) (*http.Request, error) {
+	req, err := http.NewRequest("POST", requestRoute, nil) // "/"
 	if err != nil {
 		fmt.Println(err)
 		return nil, err
@@ -52,19 +52,13 @@ var _ = Describe("UserCreate", func() {
 			return
 		}
 		req.Header.Set("Content-Type", "application/json")
+
 		resp, _ := app.Test(req)
 
 		Expect(resp.StatusCode).To(Equal(500))
 	})
 
 	It("returns a 201 Created with valid parameters", func() {
-		req, err := http.NewRequest("POST", "/", nil)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		req.Header.Set("Content-Type", "application/json")
-
 		user := models.User{
 			Email:     "test@email.com",
 			Password:  "test password",
@@ -72,9 +66,12 @@ var _ = Describe("UserCreate", func() {
 			LastName:  "test last name",
 		}
 
-		json, _ := json.Marshal(user)
+		req, err := postJsonReq("/", user)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
 
-		req.Body = io.NopCloser(bytes.NewBuffer(json))
 		resp, err := app.Test(req)
 		if err != nil {
 			fmt.Println(err)
@@ -85,13 +82,6 @@ var _ = Describe("UserCreate", func() {
 	})
 
 	It("Returns an error when an invalid email is provided", func() {
-		req, err := http.NewRequest("POST", "/", nil)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		req.Header.Set("Content-Type", "application/json")
-
 		user := models.User{
 			Email:     "testemail.com",
 			Password:  "test password",
@@ -99,9 +89,12 @@ var _ = Describe("UserCreate", func() {
 			LastName:  "test last name",
 		}
 
-		json, _ := json.Marshal(user)
+		req, err := postJsonReq("/", user)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
 
-		req.Body = io.NopCloser(bytes.NewBuffer(json))
 		resp, err := app.Test(req)
 		if err != nil {
 			fmt.Println(err)
