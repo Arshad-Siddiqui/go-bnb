@@ -1,10 +1,7 @@
 package controllers_test
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
@@ -14,6 +11,7 @@ import (
 	"github.com/Arshad-Siddiqui/go-bnb/controllers"
 	"github.com/Arshad-Siddiqui/go-bnb/initializers"
 	"github.com/Arshad-Siddiqui/go-bnb/models"
+	"github.com/Arshad-Siddiqui/jsonRequest"
 )
 
 func refreshUsers() {
@@ -23,24 +21,7 @@ func refreshUsers() {
 	initializers.DB.Exec("DELETE FROM users")
 }
 
-func postJsonReq(requestRoute string, requestObject interface{}) (*http.Request, error) {
-	req, err := http.NewRequest("POST", requestRoute, nil) // "/"
-	if err != nil {
-		fmt.Println(err)
-		return nil, err
-	}
-
-	json, err := json.Marshal(requestObject)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Body = io.NopCloser(bytes.NewBuffer(json))
-
-	req.Header.Set("Content-Type", "application/json")
-
-	return req, nil
-}
+var postJsonReq = jsonRequest.PostJsonReq
 
 var _ = Describe("UserCreate", func() {
 	BeforeEach(refreshUsers)

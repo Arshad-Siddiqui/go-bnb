@@ -15,6 +15,7 @@ import (
 	"github.com/Arshad-Siddiqui/go-bnb/controllers"
 	"github.com/Arshad-Siddiqui/go-bnb/initializers"
 	"github.com/Arshad-Siddiqui/go-bnb/models"
+	"github.com/Arshad-Siddiqui/jsonRequest"
 )
 
 var app *fiber.App
@@ -54,27 +55,17 @@ var _ = Describe("ListingCreate", func() {
 	})
 
 	It("returns a 201 Created", func() {
-		req, err := http.NewRequest("POST", "/", nil)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-
-		req.Header.Set("Content-Type", "application/json")
-
 		listing := models.Listing{
 			Title:       "Test Listing",
 			Description: "Test Description",
 			Price:       100,
 		}
-
-		jsonValue, err := json.Marshal(listing)
+		req, err := jsonRequest.PostJsonReq("/", listing)
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
 
-		req.Body = io.NopCloser(bytes.NewBuffer(jsonValue))
 		resp, err := app.Test(req)
 		if err != nil {
 			fmt.Println(err)
@@ -85,19 +76,18 @@ var _ = Describe("ListingCreate", func() {
 	})
 
 	It("returns a JSON response", func() {
-		req, _ := http.NewRequest("POST", "/", nil)
-
-		req.Header.Set("Content-Type", "application/json")
-
 		listing := models.Listing{
 			Title:       "Test Listing",
 			Description: "Test Description",
 			Price:       100,
 		}
 
-		jsonValue, _ := json.Marshal(listing)
+		req, err := jsonRequest.PostJsonReq("/", listing)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
 
-		req.Body = io.NopCloser(bytes.NewBuffer(jsonValue))
 		resp, err := app.Test(req)
 		if err != nil {
 			fmt.Println(err)
@@ -108,27 +98,18 @@ var _ = Describe("ListingCreate", func() {
 	})
 
 	It("Should return the listing created", func() {
-		req, err := http.NewRequest("POST", "/", nil)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-
-		req.Header.Set("Content-Type", "application/json")
-
 		listing := models.Listing{
 			Title:       "Test Listing",
 			Description: "Test Description",
 			Price:       100,
 		}
 
-		jsonValue, err := json.Marshal(listing)
+		req, err := jsonRequest.PostJsonReq("/", listing)
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
 
-		req.Body = io.NopCloser(bytes.NewBuffer(jsonValue))
 		resp, err := app.Test(req)
 		if err != nil {
 			fmt.Println(err)

@@ -3,7 +3,7 @@ module github.com/Arshad-Siddiqui/go-bnb
 go 1.19
 
 require (
-	github.com/Arshad-Siddiqui/jsonRequest v0.0.0-20230517125242-15a6552cb4b3
+	github.com/Arshad-Siddiqui/jsonRequest v1.0.2
 	github.com/gofiber/fiber/v2 v2.45.0
 	github.com/gofiber/template v1.7.3
 	github.com/joho/godotenv v1.5.1
